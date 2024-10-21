@@ -6,7 +6,7 @@
     cursor: pointer;
 }
 
-.btn-boost, .btn, .btn-nav, .btn-get {
+.btn-boost, .btn-nav, .btn-get {
     position: relative;
 
     &:hover::before {
@@ -26,6 +26,8 @@
     }
 }
 
+
+
 .btn-get, .btn-boost {
     background: $cyan;
     color: white;
@@ -37,6 +39,7 @@
 }
 
 .btn {
+    position: relative;
     background: $cyan;
     height: 45px;
     width: 88%;
@@ -45,6 +48,22 @@
     font-weight: 700;
     color: white;
     border: 0;
+
+    &:hover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        background:  rgba(255, 255, 255, 0);
+        transition: background-color .3s ease;
+    }
+
+    &:hover::before {
+        background:  rgba(255, 255, 255, 50%);
+    }
 
     @include desktop {
         width: 20%;
