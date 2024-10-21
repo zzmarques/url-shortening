@@ -105,19 +105,3 @@ const shortUrl = () => {
 
 shortUrl();
 
-// fetch('https://cleanuri.com/api/v1/shorten', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/x-www-form-urlencoded'
-    //     },
-    //     body: new URLSearchParams({
-    //       'url': url 
-    //     })
-    //   })
-    //   .then(response => response.json()) 
-    //   .then(data => {
-    //     const url = data.result_url
-    //     shortUrl.push(url)
-        
-    //   })
-    //   .catch(error => console.error('Erro ao encurtar a URL:', error));
