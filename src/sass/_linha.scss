@@ -1,0 +1,25 @@
+.linha {
+    height: 1px;
+    width: 86%;
+    background: $grayish-violet;
+
+    @include desktop {
+        display: none;
+    }
+}
+
+.linha-blue {
+    position: relative;
+    z-index: 1;
+    width: 275px;
+    height: 10px;
+    transform-origin: center;
+    transform: rotate(90deg);
+    background: $cyan;
+
+    @include desktop {
+        display: inline;
+        width: 30px;
+        transform: rotate(0deg);
+    }
+}

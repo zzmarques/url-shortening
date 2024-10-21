@@ -1,0 +1,637 @@
+@import './variables';
+@import './buttons';
+@import './mixin';
+@import './linha';
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-width: 375px;
+    max-width: 1440px;
+    scroll-behavior: smooth;
+
+    @include desktop {
+        overflow-x: hidden
+    }
+}
+
+header {
+    @include center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    padding: 0px 25px;
+    margin-bottom: 10px;
+
+    .logo {
+        @include center-2;
+
+        @include desktop  {
+            justify-content: center;
+            height: 80px;
+            width: 150px;
+        }
+    }
+
+    .manu-hamb {
+        @include center-2;
+
+        i {
+            color: $grayish-violet;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    .navbar {
+        display: none;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        width: 89%;
+        height: 380px;
+        padding: 0px 0px 20px 0px;
+        background: $dark-violet;
+        border-radius: 10px;
+
+        ul {
+            @include center;
+            flex-direction: column;
+            gap: 5px;
+            @include style-list;
+
+            li {
+
+                padding: 10px 30px;
+                
+                a {
+                    color: white;
+                    font-size: 1.4rem;
+                    text-decoration: none;
+
+                    @include desktop {
+                        font-size: 15px;
+                        color: $grayish-violet;
+                        &:hover {
+                            color: $dark-violet;
+                        }
+                    }
+                }
+
+                @include desktop {
+                    padding: 8px 20px;
+                }
+            }
+
+            @include desktop {
+                flex-direction: row;
+                width: 40%;
+                gap: 0;
+                margin: 20px 0px 0px 0px;
+            }
+        }
+
+        .links-1 {
+            height: 60%;
+            @include desktop {
+                justify-content: flex-start;
+                height: 80px;
+            }
+        }
+
+        .links-2 {
+            height: 40%;
+            @include desktop {
+                justify-content: end;
+                height: 80px;
+            }
+        }
+
+        @include desktop {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            position: relative;
+            top: 0;
+            background: transparent;
+            height: 80px;
+            width: 90%;
+            margin: 0;
+            border-radius: 0; 
+        }
+
+    }
+
+    @include desktop {
+        justify-content: space-evenly;
+        height: 80px;
+        margin: 0;
+        padding: 0px 88px;
+        margin-bottom: 60px
+    }
+}
+
+main {
+
+    .sec1 {
+        @include wh-100;
+
+        .img-illus {
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 20px;
+
+            @include desktop {
+                position: relative;
+                overflow: visible;
+                display: flex;
+                justify-content: flex-end;
+                width:  40%;
+                height: 70%;
+                margin: 0;        
+            }
+        }
+
+        img {
+            margin-left: 25px;
+            height: 300px;
+            width: 510px;
+
+            @include desktop {
+                position: absolute;
+                bottom: 30px;
+                left: 18px;
+                margin: 0;
+                height: 455px;
+                width: 700px;
+                clip-path: inset(0 90px 0 0);
+            }
+        }
+
+        .text {
+            text-align: center;
+            margin: 0px 25px 190px;
+            height: 270px;
+
+            h1 {
+                color: $very-dark-violet;
+                font-size: 2.5rem;
+                font-weight: 700;
+                line-height: 40px;
+
+                @include desktop {
+                    font-size: 4rem;
+                    line-height: 70px;
+                }
+            }
+
+            p {
+                color: gray;
+                font-size: $font-size;
+                font-weight: 500;
+                margin: 20px 0px;
+
+                @include desktop {
+                    font-size: 20px;
+                    margin: 10px 0px 30px 0px;
+                }
+            }
+
+            @include desktop {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                text-align: left;
+                flex-direction: column;
+                width: 40%;
+                height: 70%;
+                margin: auto 0px;
+                
+            }
+        }
+
+        @include desktop {
+            @include center;
+            align-items: flex-start;
+            flex-direction: row-reverse;
+            justify-content: space-evenly;
+            height: 100vh;
+        }
+    }
+
+
+    .sec2 {
+        @include wh-100;
+        background: $gray-light;
+        padding-bottom: 90px;
+
+        .container {
+            background: $dark-violet url('../assets/images/bg-shorten-mobile.svg');
+            background-repeat: no-repeat;
+            background-position: top left;
+            background-size: 100% 90%;
+            @include center;
+            gap: 25px;
+            flex-flow: column nowrap;
+            height: 170px;
+            margin: 0px 25px;
+            border-radius: 15px;
+            position: relative;
+            bottom: 90px;
+            z-index: 999;
+
+            @include desktop {
+                background: $dark-violet url('../assets/images/bg-shorten-desktop.svg');
+                background-size: cover;
+                flex-direction: row;
+                margin: 0px 80px;
+            }
+
+            .container-input {
+                width: 88%;
+                height: 52px;
+
+                @include desktop {
+                    width: 70%;
+                }
+
+                input[type="url"] {
+                    height: 50px;
+                    width: 100%;
+                    border-radius: 5px;
+                    padding-left: 13px;
+                    border: 0;             
+    
+                    &::placeholder {
+                       color: $gray;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+    
+                }
+
+                .error {
+                    border: 3px solid $color-red !important;
+
+                    &::placeholder {
+                        color: $color-red;
+                    }
+                }
+
+                
+                span { 
+                    display: inline;
+                    color: $color-red;
+                    padding-left: 13px;
+                    font-size: 12px;
+                }
+
+            }
+            
+
+        }
+
+        .container-card {
+            @include center;
+            flex-flow: column nowrap;
+            width: 100%;
+            height: auto;
+
+            @include desktop {
+                position: relative;
+                bottom: 50px;
+            }
+
+            hr {
+                @include desktop {
+                    display: none;
+                }
+            }
+
+            .card-link {
+                background: white;
+                height: 170px;
+                width: 88%;
+                margin: 0px 25px 20px;
+                border-radius: 5px;
+
+                @include desktop  {
+                    @include center-2;
+                    justify-content: space-between;
+                    height: 80px;
+                }
+
+                span {
+
+                    @include desktop {
+                        font-size: $font-size;
+                    }
+                }
+
+
+                .link {
+                    @include center-2;
+                    padding-left: 20px;
+                    height: 50px;
+
+                    @include desktop {
+                        width: 55%;
+                        
+                    }
+
+                    span {
+                        color: $very-dark-violet;
+                        
+
+                    }
+                }
+
+                .link-cop {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    padding-left: 20px;
+                    height: 120px;
+
+                    @include desktop {
+                        align-items: center;
+                        justify-content: space-evenly;
+                        flex-direction: row;
+                        width: 45%;
+                        height: 50px;
+                        padding: 0;
+                    }
+
+                    span {
+                        color: $cyan;
+                    }
+                }
+            }
+        }
+
+        .container-info {
+            @include center-2;
+            flex-direction: column;
+            margin-top: 80px;
+            @include wh-100;
+
+            @include desktop {
+                flex-direction: row;
+                flex-wrap: wrap;
+                width: 88%;
+                margin-inline: auto;
+                margin-bottom: 100px;
+            }
+
+            .intro {
+                text-align: center;
+
+                @include desktop {
+                    @include center;
+                    flex-direction: column;
+                    width: 100%;
+                    margin-bottom: 130px;
+                }
+
+                h2 {
+                    color: $very-dark-violet;
+                    font-size: 1.9rem;
+                    margin-bottom: 20px;
+
+                    @include desktop {
+                        font-size: 2.5rem;
+                    }
+                }
+
+                p {
+                    font-size: $font-size;
+                    font-weight: 500;
+                    color: $grayish-violet;
+                    margin-bottom: 130px;
+                    @include desktop {
+                        max-width: 510px;
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+
+            .cards-info {
+                position: relative;
+                z-index: 222;
+                @include center;
+                flex-direction: column;
+
+                height: 270px;
+                width: 90%;
+                margin: 0px auto 130px;
+                border-radius: 6px;
+                background: white;
+                text-align: center;
+
+                @include desktop {
+                    margin: 0;
+                    width: 375px;
+                    text-align: left;
+                }
+                
+
+                .cicle {
+                    position: absolute;
+                    top: -40px;
+                    @include center;
+                    background: $dark-violet;
+                    height: 90px;
+                    width: 90px;
+                    border-radius: 50%;
+
+                    @include desktop {
+                        left: 30px;
+                    }
+                }
+
+                .cards-txt {
+
+                    margin: 0px 24px;
+                    h3 {
+                        font-size: 1.5rem;
+                        margin: 20px;
+                        @include desktop {
+                            margin: 0 0 20px 0;
+                           
+                        }
+                    }
+    
+                    p {
+                        color: $grayish-violet;
+                        font-size: 16px;
+                        font-weight: 500;
+
+                        @include desktop {
+                            font-size: 15px;
+                        }
+                    }
+                }
+
+                
+            }
+
+            .card-2 {
+
+                @include desktop {
+                    position: relative;
+                    top: 30px;
+                }
+            }
+
+            .ult {
+                margin-bottom: 0px;
+                @include desktop {
+                    position: relative;
+                    top: 60px;
+                }
+            }
+        }
+
+    }
+
+    .boost {
+       background: $dark-violet url("../assets/images/bg-boost-mobile.svg");
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: 100%;
+       @include center;
+       flex-direction: column;
+       gap: 15px;
+       width: 100%;
+       height: 280px;
+
+       @include desktop {
+        background: $dark-violet url("../assets/images/bg-boost-desktop.svg");
+        background-position: top left;
+        background-size: 100% 100%;
+
+       }
+
+
+       h1 {
+        color: white;
+        font-size: 1.6rem;
+
+        @include desktop {
+            font-size: 2rem;
+        }
+       }
+
+    }
+    
+}
+
+
+footer {
+    background: $very-dark-violet;
+    @include wh-100;
+    @include center;
+    flex-direction: column;
+
+    @include desktop {
+        justify-content: space-around;
+        flex-direction:  row;
+        height: 350px;
+        padding-top: 90px;
+    }
+    
+    .footer-logo {
+        margin: 50px 0px;
+    
+        @include desktop {
+            display: flex;
+            align-items: flex-start;
+            height: 230px;
+            margin: 0;
+        }
+    }
+
+    .nav-foo {
+        @include desktop {
+            @include center;
+            justify-content: space-between;
+            flex-direction:  row;
+            width: 60%;
+            height: 230px;
+        }
+    }
+    
+
+    .navbar-foo1, .navbar-foo2, .navbar-foo3 {
+        @include center;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 25px;
+
+        @include desktop {
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100%;
+            margin: 0;
+        }
+    }
+
+    ul {
+        @include style-list;
+        text-align: center;
+
+        @include desktop {
+            text-align: left;
+        }
+
+        li {
+            margin-bottom: 10px;
+
+            a {
+                color: $gray;
+                text-decoration: none;
+                &:hover {
+                    color: $cyan;
+                }
+            }
+        }
+    }
+
+    span {
+        color: white;
+        font-size: $font-size;
+
+    }
+
+    .social-midia {
+        @include center;
+        gap: 20px;
+        margin: 50px 0;
+
+        @include desktop {
+            align-items: flex-start;
+            width: 30%;
+            height: 100%;
+        }
+
+        i {
+            color: white;
+            font-size: 2rem;
+        }
+    }
+
+}
