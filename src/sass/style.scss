@@ -10,6 +10,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -275,7 +276,7 @@ main {
                     border: 0;             
     
                     &::placeholder {
-                       color: $gray;
+                        color: $gray;
                     }
 
                     &:focus {
@@ -306,10 +307,16 @@ main {
         }
 
         .container-card {
-            @include center;
-            flex-flow: column nowrap;
+            display: flex;
+            flex-flow: column ;
+            align-items: center;
+            gap: 20px;
             width: 100%;
-            height: auto;
+            height: 220px;
+            padding-block: 20px;
+            overflow: hidden;
+            overflow: scroll;
+            scrollbar-width: none;
 
             @include desktop {
                 position: relative;
@@ -323,10 +330,10 @@ main {
             }
 
             .card-link {
+                flex-shrink: 0;
                 background: white;
                 height: 170px;
                 width: 88%;
-                margin: 0px 25px 20px;
                 border-radius: 5px;
 
                 @include desktop  {

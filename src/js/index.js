@@ -35,52 +35,51 @@ menu();
 
 
 const shortUrl = () => {
-    // const url = "https://www.frontendmentor.io";
     const btnShorten = document.querySelector('div.container button.btn');
-
+    const apiKey = 'Jameds7SNp5FDsDncO4CmOVB8l9i8dmZnUkfGeZ7nMrEnLcpGfP7s2sb6RYK';
+    
     const buscarUrl = async (url) => {
-        const response = await fetch('https://cleanuri.com/api/v1/shorten', {
+        const response = await fetch('https://api.tinyurl.com/create', {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
             },
-            body: new URLSearchParams({
-            'url': url 
+            body: JSON.stringify({
+                url: url,
+                domain: "tiny.one"
             })
         });
         const data = await response.json();
     
-        showLinks(url, data.result_url);
+        showLinks(url, data.data?.tiny_url);
     }
 
     const showLinks = (url, link) => {
-        const divInput = document.querySelector('section.sec2 div.container');
+        const divInput = document.querySelector('section.sec2 div.container-card');
         const cardLinks = 
                 `
-                <div class="container-card">
-                    <div class="card-link">
-                        <div class="link">
-                            <span>${url}</span>
-                        </div>
-                        <hr>
-                        <div class="link-cop">
-                            <span>${link}</span>
-                            <button class="btn-copy">Copy</button>
-                        </div>
+                <div class="card-link">
+                    <div class="link">
+                        <span>${url}</span>
+                    </div>
+                    <hr>
+                    <div class="link-cop">
+                        <span>${link}</span>
+                        <button class="btn-copy">Copy</button>
                     </div>
                 </div>
                 `
-        divInput.insertAdjacentHTML('afterend', cardLinks);
+        divInput.insertAdjacentHTML('beforeend', cardLinks);
         const btnCopy = document.querySelectorAll('div.card-link button.btn-copy');
 
         const copyLink = (link, i) => {
-           navigator.clipboard.writeText(link)
+            navigator.clipboard.writeText(link)
             btnCopy[i].innerHTML = "Copied!";
             btnCopy[i].style.backgroundColor = '#3b3054';
         }
         
         btnCopy.forEach( (btns, i) => {
-            const index = i
             btns.addEventListener('click', () => {
                 copyLink(link, i)
             })
