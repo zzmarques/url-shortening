@@ -1,9 +1,12 @@
+@use './mixin';
+@use './variables';
+
 .linha {
     height: 1px;
     width: 86%;
-    background: $grayish-violet;
+    background: variables.$grayish-violet;
 
-    @include desktop {
+    @include mixin.desktop {
         display: none;
     }
 }
@@ -15,9 +18,9 @@
     height: 10px;
     transform-origin: center;
     transform: rotate(90deg);
-    background: $cyan;
+    background: variables.$cyan;
 
-    @include desktop {
+    @include mixin.desktop {
         display: inline;
         width: 30px;
         transform: rotate(0deg);

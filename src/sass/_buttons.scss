@@ -1,5 +1,5 @@
-@import "./variables";
-@import "./mixin";
+@use "./variables";
+@use "./mixin";
 
 
 .btn-nav, .btn-get, .btn-copy, .btn-boost, .btn {
@@ -29,7 +29,7 @@
 
 
 .btn-get, .btn-boost {
-    background: $cyan;
+    background: variables.$cyan;
     color: white;
     font-size: 18px;
     font-weight: 500;
@@ -40,11 +40,11 @@
 
 .btn {
     position: relative;
-    background: $cyan;
+    background: variables.$cyan;
     height: 45px;
     width: 88%;
     border-radius: 5px;
-    font-size: $font-size;
+    font-size: variables.$font-size;
     font-weight: 700;
     color: white;
     border: 0;
@@ -65,40 +65,40 @@
         background:  rgba(255, 255, 255, 50%);
     }
 
-    @include desktop {
+    @include mixin.desktop {
         width: 20%;
     }
 
 }
 
 .btn-copy {
-    background: $cyan;
+    background: variables.$cyan;
     height: 45px;
     width: 95%;
     border-radius: 5px;
     margin-top: 10px;
-    font-size: $font-size;
+    font-size: variables.$font-size;
     font-weight: 700;
     color: white;
     border: 0;
     transition: background-color .5s ease;
 
-    @include desktop {
+    @include mixin.desktop {
         margin: 0;
         width: 155px;
     }
 
     &:hover {
-        background: $dark-violet;
+        background: variables.$dark-violet;
     }
 }
 
 .btn-nav {
-    background: $cyan;
+    background: variables.$cyan;
     padding: 10px 90px;
     border-radius: 30px;
 
-    @include desktop {
+    @include mixin.desktop {
         padding: 10px 20px;
         color: white !important;
     }

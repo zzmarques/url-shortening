@@ -1,7 +1,7 @@
-@import './variables';
-@import './buttons';
-@import './mixin';
-@import './linha';
+@use './variables';
+@use './buttons' as *;
+@use './mixin';
+@use './linha' as *;
 
 
 
@@ -13,18 +13,9 @@
     scroll-behavior: smooth;
 }
 
-body {
-    min-width: 375px;
-    max-width: 1440px;
-    scroll-behavior: smooth;
-
-    @include desktop {
-        overflow-x: hidden
-    }
-}
 
 header {
-    @include center;
+    @include mixin.center;
     justify-content: space-between;
     width: 100%;
     height: 50px;
@@ -32,9 +23,9 @@ header {
     margin-bottom: 10px;
 
     .logo {
-        @include center-2;
+        @include mixin.center-2;
 
-        @include desktop  {
+        @include mixin.desktop  {
             justify-content: center;
             height: 80px;
             width: 150px;
@@ -42,15 +33,15 @@ header {
     }
 
     .manu-hamb {
-        @include center-2;
+        @include mixin.center-2;
 
         i {
-            color: $grayish-violet;
+            color: variables.$grayish-violet;
             font-size: 1.7rem;
             cursor: pointer;
         }
 
-        @include desktop {
+        @include mixin.desktop {
             display: none;
         }
     }
@@ -64,14 +55,14 @@ header {
         width: 89%;
         height: 380px;
         padding: 0px 0px 20px 0px;
-        background: $dark-violet;
+        background: variables.$dark-violet;
         border-radius: 10px;
 
         ul {
-            @include center;
+            @include mixin.center;
             flex-direction: column;
             gap: 5px;
-            @include style-list;
+            @include mixin.style-list;
 
             li {
 
@@ -82,21 +73,21 @@ header {
                     font-size: 1.4rem;
                     text-decoration: none;
 
-                    @include desktop {
+                    @include mixin.desktop {
                         font-size: 15px;
-                        color: $grayish-violet;
+                        color: variables.$grayish-violet;
                         &:hover {
-                            color: $dark-violet;
+                            color: variables.$dark-violet;
                         }
                     }
                 }
 
-                @include desktop {
+                @include mixin.desktop {
                     padding: 8px 20px;
                 }
             }
 
-            @include desktop {
+            @include mixin.desktop {
                 flex-direction: row;
                 width: 40%;
                 gap: 0;
@@ -106,7 +97,7 @@ header {
 
         .links-1 {
             height: 60%;
-            @include desktop {
+            @include mixin.desktop {
                 justify-content: flex-start;
                 height: 80px;
             }
@@ -114,13 +105,13 @@ header {
 
         .links-2 {
             height: 40%;
-            @include desktop {
+            @include mixin.desktop {
                 justify-content: end;
                 height: 80px;
             }
         }
 
-        @include desktop {
+        @include mixin.desktop {
             display: flex;
             justify-content: space-between;
             flex-direction: row;
@@ -135,10 +126,11 @@ header {
 
     }
 
-    @include desktop {
+    @include mixin.desktop {
         justify-content: space-evenly;
+        max-width: 1440px;
         height: 80px;
-        margin: 0;
+        margin: 0 auto;
         padding: 0px 88px;
         margin-bottom: 60px
     }
@@ -147,37 +139,48 @@ header {
 main {
 
     .sec1 {
-        @include wh-100;
+        @include mixin.wh-100;
+
+        @include mixin.desktop {
+            @include mixin.center;
+            align-items: flex-start;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            position: relative;
+            max-width: 1440px;
+            height: 100vh;
+            margin: 0 auto;
+            padding: 180px 88px;
+        }
 
         .img-illus {
             overflow: hidden;
             width: 100%;
             margin-bottom: 20px;
-
-            @include desktop {
-                position: relative;
-                overflow: visible;
+            
+            @include mixin.desktop {
                 display: flex;
-                justify-content: flex-end;
+                align-items: center;
+                position: absolute;
+                top: 0;
+                right: 0;
                 width:  40%;
                 height: 70%;
                 margin: 0;        
             }
-        }
 
-        img {
-            margin-left: 25px;
-            height: 300px;
-            width: 510px;
+            img {
+                margin-left: 25px;
+                height: 300px;
+                width: 510px;
 
-            @include desktop {
-                position: absolute;
-                bottom: 30px;
-                left: 18px;
-                margin: 0;
-                height: 455px;
-                width: 700px;
-                clip-path: inset(0 90px 0 0);
+                @include mixin.desktop {
+                    
+                    margin: 0;
+                    height: 455px;
+                    width: 700px;
+                    clip-path: inset(0 90px 0 0);
+                }
             }
         }
 
@@ -186,13 +189,24 @@ main {
             margin: 0px 25px 190px;
             height: 270px;
 
+            @include mixin.desktop {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                text-align: left;
+                width: 500px;
+                height: auto;
+                margin: 0;
+            }
+
             h1 {
-                color: $very-dark-violet;
+                color: variables.$very-dark-violet;
                 font-size: 2.5rem;
                 font-weight: 700;
                 line-height: 40px;
 
-                @include desktop {
+                @include mixin.desktop {
                     font-size: 4rem;
                     line-height: 70px;
                 }
@@ -200,50 +214,30 @@ main {
 
             p {
                 color: gray;
-                font-size: $font-size;
+                font-size: variables.$font-size;
                 font-weight: 500;
                 margin: 20px 0px;
 
-                @include desktop {
+                @include mixin.desktop {
                     font-size: 20px;
                     margin: 10px 0px 30px 0px;
                 }
             }
-
-            @include desktop {
-                display: flex;
-                justify-content: flex-start;
-                align-items: flex-start;
-                text-align: left;
-                flex-direction: column;
-                width: 40%;
-                height: 70%;
-                margin: auto 0px;
-                
-            }
-        }
-
-        @include desktop {
-            @include center;
-            align-items: flex-start;
-            flex-direction: row-reverse;
-            justify-content: space-evenly;
-            height: 100vh;
         }
     }
 
 
     .sec2 {
-        @include wh-100;
-        background: $gray-light;
+        @include mixin.wh-100;
+        background: variables.$gray-light;
         padding-bottom: 90px;
 
         .container {
-            background: $dark-violet url('../assets/images/bg-shorten-mobile.svg');
+            background: variables.$dark-violet url('../assets/images/bg-shorten-mobile.svg');
             background-repeat: no-repeat;
             background-position: top left;
             background-size: 100% 90%;
-            @include center;
+            @include mixin.center;
             gap: 25px;
             flex-flow: column nowrap;
             height: 170px;
@@ -253,8 +247,8 @@ main {
             bottom: 90px;
             z-index: 999;
 
-            @include desktop {
-                background: $dark-violet url('../assets/images/bg-shorten-desktop.svg');
+            @include mixin.desktop {
+                background: variables.$dark-violet url('../assets/images/bg-shorten-desktop.svg');
                 background-size: cover;
                 flex-direction: row;
                 margin: 0px 80px;
@@ -264,7 +258,7 @@ main {
                 width: 88%;
                 height: 52px;
 
-                @include desktop {
+                @include mixin.desktop {
                     width: 70%;
                 }
 
@@ -276,7 +270,7 @@ main {
                     border: 0;             
     
                     &::placeholder {
-                        color: $gray;
+                        color: variables.$gray;
                     }
 
                     &:focus {
@@ -286,17 +280,17 @@ main {
                 }
 
                 .error {
-                    border: 3px solid $color-red !important;
+                    border: 3px solid variables.$color-red !important;
 
                     &::placeholder {
-                        color: $color-red;
+                        color: variables.$color-red;
                     }
                 }
 
                 
                 span { 
                     display: inline;
-                    color: $color-red;
+                    color: variables.$color-red;
                     padding-left: 13px;
                     font-size: 12px;
                 }
@@ -318,13 +312,13 @@ main {
             overflow: scroll;
             scrollbar-width: none;
 
-            @include desktop {
+            @include mixin.desktop {
                 position: relative;
                 bottom: 50px;
             }
 
             hr {
-                @include desktop {
+                @include mixin.desktop {
                     display: none;
                 }
             }
@@ -336,32 +330,32 @@ main {
                 width: 88%;
                 border-radius: 5px;
 
-                @include desktop  {
-                    @include center-2;
+                @include mixin.desktop  {
+                    @include mixin.center-2;
                     justify-content: space-between;
                     height: 80px;
                 }
 
                 span {
 
-                    @include desktop {
-                        font-size: $font-size;
+                    @include mixin.desktop {
+                        font-size: variables.$font-size;
                     }
                 }
 
 
                 .link {
-                    @include center-2;
+                    @include mixin.center-2;
                     padding-left: 20px;
                     height: 50px;
 
-                    @include desktop {
+                    @include mixin.desktop {
                         width: 55%;
                         
                     }
 
                     span {
-                        color: $very-dark-violet;
+                        color: variables.$very-dark-violet;
                         
 
                     }
@@ -374,7 +368,7 @@ main {
                     padding-left: 20px;
                     height: 120px;
 
-                    @include desktop {
+                    @include mixin.desktop {
                         align-items: center;
                         justify-content: space-evenly;
                         flex-direction: row;
@@ -384,19 +378,19 @@ main {
                     }
 
                     span {
-                        color: $cyan;
+                        color: variables.$cyan;
                     }
                 }
             }
         }
 
         .container-info {
-            @include center-2;
+            @include mixin.center-2;
             flex-direction: column;
             margin-top: 80px;
-            @include wh-100;
+            @include mixin.wh-100;
 
-            @include desktop {
+            @include mixin.desktop {
                 flex-direction: row;
                 flex-wrap: wrap;
                 width: 88%;
@@ -407,108 +401,119 @@ main {
             .intro {
                 text-align: center;
 
-                @include desktop {
-                    @include center;
+                @include mixin.desktop {
+                    @include mixin.center;
                     flex-direction: column;
                     width: 100%;
                     margin-bottom: 130px;
                 }
 
                 h2 {
-                    color: $very-dark-violet;
+                    color: variables.$very-dark-violet;
                     font-size: 1.9rem;
                     margin-bottom: 20px;
 
-                    @include desktop {
+                    @include mixin.desktop {
                         font-size: 2.5rem;
                     }
                 }
 
                 p {
-                    font-size: $font-size;
+                    font-size: variables.$font-size;
                     font-weight: 500;
-                    color: $grayish-violet;
+                    color: variables.$grayish-violet;
                     margin-bottom: 130px;
-                    @include desktop {
+                    @include mixin.desktop {
                         max-width: 510px;
                         margin-bottom: 0px;
                     }
                 }
             }
 
-            .cards-info {
-                position: relative;
-                z-index: 222;
-                @include center;
+            .container-cards-infos {
+                @include mixin.center-2;
                 flex-direction: column;
 
-                height: 270px;
-                width: 90%;
-                margin: 0px auto 130px;
-                border-radius: 6px;
-                background: white;
-                text-align: center;
-
-                @include desktop {
-                    margin: 0;
-                    width: 375px;
-                    text-align: left;
+                @include mixin.desktop {
+                    flex-direction: row;
+                    width: 100%;
+                    position: relative;
                 }
-                
 
-                .cicle {
-                    position: absolute;
-                    top: -40px;
-                    @include center;
-                    background: $dark-violet;
-                    height: 90px;
-                    width: 90px;
-                    border-radius: 50%;
+                .cards-info {
+                    position: relative;
+                    z-index: 222;
+                    @include mixin.center;
+                    flex-direction: column;
 
-                    @include desktop {
-                        left: 30px;
+                    height: 270px;
+                    width: 90%;
+                    margin: 0px auto 130px;
+                    border-radius: 6px;
+                    background: white;
+                    text-align: center;
+
+                    @include mixin.desktop {
+                        margin: 0;
+                        min-width: 279px;
+                        width: 40%;
+                        text-align: left;
                     }
-                }
+                    
+                    .cicle {
+                        position: absolute;
+                        top: -40px;
+                        @include mixin.center;
+                        background: variables.$dark-violet;
+                        height: 90px;
+                        width: 90px;
+                        border-radius: 50%;
 
-                .cards-txt {
-
-                    margin: 0px 24px;
-                    h3 {
-                        font-size: 1.5rem;
-                        margin: 20px;
-                        @include desktop {
-                            margin: 0 0 20px 0;
-                           
+                        @include mixin.desktop {
+                            left: 30px;
                         }
                     }
-    
-                    p {
-                        color: $grayish-violet;
-                        font-size: 16px;
-                        font-weight: 500;
 
-                        @include desktop {
-                            font-size: 15px;
+                    .cards-txt {
+
+                        margin: 0px 24px;
+                        h3 {
+                            font-size: 1.5rem;
+                            margin: 20px;
+                            @include mixin.desktop {
+                                margin: 0 0 20px 0;
+                            
+                            }
                         }
+        
+                        p {
+                            color: variables.$grayish-violet;
+                            font-size: 16px;
+                            font-weight: 500;
+
+                            @include mixin.desktop {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+
+                    
+                }
+
+                .card-2 {
+
+                    @include mixin.desktop {
+                        position: relative;
+                        top: 30px;
                     }
                 }
 
-                
-            }
-
-            .card-2 {
-
-                @include desktop {
-                    position: relative;
-                    top: 30px;
-                }
-            }
-
-            .ult {
-                margin-bottom: 0px;
-                @include desktop {
-                    position: relative;
-                    top: 60px;
+                .ult {
+                    margin-bottom: 0px;
+                    @include mixin.desktop {
+                        position: relative;
+                        top: 60px;
+                    }
                 }
             }
         }
@@ -516,32 +521,31 @@ main {
     }
 
     .boost {
-       background: $dark-violet url("../assets/images/bg-boost-mobile.svg");
-       background-position: center;
-       background-repeat: no-repeat;
-       background-size: 100%;
-       @include center;
-       flex-direction: column;
-       gap: 15px;
-       width: 100%;
-       height: 280px;
+        background: variables.$dark-violet url("../assets/images/bg-boost-mobile.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        @include mixin.center;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        height: 280px;
 
-       @include desktop {
-        background: $dark-violet url("../assets/images/bg-boost-desktop.svg");
-        background-position: top left;
-        background-size: 100% 100%;
-
-       }
-
-
-       h1 {
-        color: white;
-        font-size: 1.6rem;
-
-        @include desktop {
-            font-size: 2rem;
+        @include mixin.desktop {
+            background: variables.$dark-violet url("../assets/images/bg-boost-desktop.svg");
+            background-position: top left;
+            background-size: 100% 100%;
         }
-       }
+
+
+        h1 {
+            color: white;
+            font-size: 1.6rem;
+
+            @include mixin.desktop {
+                font-size: 2rem;
+            }
+        }
 
     }
     
@@ -549,12 +553,12 @@ main {
 
 
 footer {
-    background: $very-dark-violet;
-    @include wh-100;
-    @include center;
+    background: variables.$very-dark-violet;
+    @include mixin.wh-100;
+    @include mixin.center;
     flex-direction: column;
 
-    @include desktop {
+    @include mixin.desktop {
         justify-content: space-around;
         flex-direction:  row;
         height: 350px;
@@ -564,7 +568,7 @@ footer {
     .footer-logo {
         margin: 50px 0px;
     
-        @include desktop {
+        @include mixin.desktop {
             display: flex;
             align-items: flex-start;
             height: 230px;
@@ -573,8 +577,8 @@ footer {
     }
 
     .nav-foo {
-        @include desktop {
-            @include center;
+        @include mixin.desktop {
+            @include mixin.center;
             justify-content: space-between;
             flex-direction:  row;
             width: 60%;
@@ -584,12 +588,12 @@ footer {
     
 
     .navbar-foo1, .navbar-foo2, .navbar-foo3 {
-        @include center;
+        @include mixin.center;
         flex-direction: column;
         gap: 20px;
         margin-bottom: 25px;
 
-        @include desktop {
+        @include mixin.desktop {
             align-items: flex-start;
             justify-content: flex-start;
             height: 100%;
@@ -598,10 +602,10 @@ footer {
     }
 
     ul {
-        @include style-list;
+        @include mixin.style-list;
         text-align: center;
 
-        @include desktop {
+        @include mixin.desktop {
             text-align: left;
         }
 
@@ -609,10 +613,10 @@ footer {
             margin-bottom: 10px;
 
             a {
-                color: $gray;
+                color: variables.$gray;
                 text-decoration: none;
                 &:hover {
-                    color: $cyan;
+                    color: variables.$cyan;
                 }
             }
         }
@@ -620,16 +624,16 @@ footer {
 
     span {
         color: white;
-        font-size: $font-size;
+        font-size: variables.$font-size;
 
     }
 
     .social-midia {
-        @include center;
+        @include mixin.center;
         gap: 20px;
         margin: 50px 0;
 
-        @include desktop {
+        @include mixin.desktop {
             align-items: flex-start;
             width: 30%;
             height: 100%;
