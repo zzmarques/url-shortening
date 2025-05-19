@@ -57,6 +57,8 @@ const shortUrl = () => {
 
     const showLinks = (url, link) => {
         const divInput = document.querySelector('section.sec2 div.container-card');
+        divInput.style.height = '220px';
+        
         const cardLinks = 
                 `
                 <div class="card-link">
