@@ -143,14 +143,14 @@ main {
 
         @include mixin.desktop {
             @include mixin.center;
-            align-items: flex-start;
+            align-items: center;
             flex-direction: row-reverse;
             justify-content: flex-end;
             position: relative;
             max-width: 1440px;
             height: 100vh;
             margin: 0 auto;
-            padding: 180px 88px;
+            padding: 0px 88px;
         }
 
         .img-illus {
@@ -198,6 +198,7 @@ main {
                 width: 500px;
                 height: auto;
                 margin: 0;
+                margin-bottom: 130px;
             }
 
             h1 {
